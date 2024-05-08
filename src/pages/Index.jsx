@@ -54,7 +54,7 @@ const Index = () => {
         <Heading>Chat Interface</Heading>
         <Flex>
           {conversations.map((conversation, index) => (
-            <Button key={conversation.id} onClick={() => handleSelectConversation(conversation.id)} colorScheme={conversation.id === activeConversationId ? "blue" : "gray"}>
+            <Button key={conversation.id} onClick={() => handleSelectConversation(conversation.id)} colorScheme={conversation.closed ? "red" : conversation.id === activeConversationId ? "blue" : "gray"}>
               {conversation.title} {conversation.closed ? "(Closed)" : ""}
             </Button>
           ))}
@@ -80,7 +80,7 @@ const Index = () => {
             <Stack spacing={3}>
               {activeConversation.messages.map((msg, index) => (
                 <Flex key={index} justify={index % 2 === 0 ? "flex-start" : "flex-end"}>
-                  <Box bg="blue.100" p={2} borderRadius="lg">
+                  <Box bg={activeConversation.closed ? "red.100" : "blue.100"} p={2} borderRadius="lg">
                     <Text fontSize="xs" color="gray.500">
                       {new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}
                     </Text>
