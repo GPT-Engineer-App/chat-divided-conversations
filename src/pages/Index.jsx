@@ -44,10 +44,13 @@ const Index = () => {
         <Heading>Chat Interface</Heading>
         <Flex>
           {conversations.map((conversation, index) => (
-            <Button key={conversation.id} onClick={() => handleSelectConversation(conversation.id)} colorScheme={conversation.id === activeConversationId ? "blue" : "gray"}>
+            <Button key={conversation.id} onClick={() => handleSelectConversation(conversation.id)} colorScheme={conversation.closed ? "red" : conversation.id === activeConversationId ? "blue" : "gray"}>
               {conversation.title} {conversation.closed ? "(Closed)" : ""}
             </Button>
           ))}
+          <Button colorScheme="teal" onClick={() => {}}>
+            New Conversation
+          </Button>
         </Flex>
         <Box p={4} border="1px" borderColor="gray.200">
           <VStack spacing={4} align="stretch">
