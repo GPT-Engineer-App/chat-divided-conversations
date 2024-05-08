@@ -57,9 +57,17 @@ const Index = () => {
             <Heading size="md">{activeConversation.title}</Heading>
             <Stack spacing={3}>
               {activeConversation.messages.map((msg, index) => (
-                <Box key={index} bg={activeConversation.closed ? "red.100" : "blue.100"} p={2} borderRadius="lg">
-                  <Text>{msg}</Text>
-                </Box>
+                <Flex key={index} justify={index % 2 === 0 ? "flex-start" : "flex-end"}>
+                  <Box bg={activeConversation.closed ? "red.100" : "blue.100"} p={2} borderRadius="lg">
+                    <Text fontSize="xs" color="gray.500">
+                      {new Date().toLocaleTimeString()}
+                    </Text>
+                    <Text>{msg}</Text>
+                    <Text fontSize="xs" color="gray.500">
+                      {index % 2 === 0 ? "Customer" : "Service"}
+                    </Text>
+                  </Box>
+                </Flex>
               ))}
             </Stack>
             <Flex>
