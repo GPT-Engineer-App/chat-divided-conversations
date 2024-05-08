@@ -54,7 +54,7 @@ const Index = () => {
         <Heading>Chat Interface</Heading>
         <Flex>
           {conversations.map((conversation, index) => (
-            <Button key={conversation.id} onClick={() => handleSelectConversation(conversation.id)} colorScheme={conversation.id === activeConversationId ? "blue" : "gray"}>
+            <Button key={conversation.id} onClick={() => handleSelectConversation(conversation.id)} colorScheme={conversation.closed ? "red" : conversation.id === activeConversationId ? "blue" : "gray"}>
               {conversation.title} {conversation.closed ? "(Closed)" : ""}
             </Button>
           ))}
