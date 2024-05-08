@@ -14,7 +14,17 @@ const Index = () => {
     if (message.trim() === "") return;
     const updatedConversations = conversations.map((conversation) => {
       if (conversation.id === activeConversationId) {
-        return { ...conversation, messages: [...conversation.messages, message] };
+        let updatedTitle = conversation.title;
+        if (conversation.title === "New Conversation" && conversation.messages.length === 0) {
+          if (message.toLowerCase().includes("order")) {
+            updatedTitle = "Order Inquiry";
+          } else if (message.toLowerCase().includes("payment")) {
+            updatedTitle = "Payment Issue";
+          } else {
+            updatedTitle = "General Inquiry";
+          }
+        }
+        return { ...conversation, title: updatedTitle, messages: [...conversation.messages, message] };
       }
       return conversation;
     });
