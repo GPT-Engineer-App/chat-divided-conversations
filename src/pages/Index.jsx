@@ -80,7 +80,7 @@ const Index = () => {
             <Stack spacing={3}>
               {activeConversation.messages.map((msg, index) => (
                 <Flex key={index} justify={index % 2 === 0 ? "flex-start" : "flex-end"}>
-                  <Box bg={activeConversation.closed ? "red.100" : "blue.100"} p={2} borderRadius="lg">
+                  <Box bg="blue.100" p={2} borderRadius="lg">
                     <Text fontSize="xs" color="gray.500">
                       {new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}
                     </Text>
