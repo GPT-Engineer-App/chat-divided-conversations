@@ -57,7 +57,9 @@ const Index = () => {
             <Heading size="md">{activeConversation.title}</Heading>
             <Stack spacing={3}>
               {activeConversation.messages.map((msg, index) => (
-                <Text key={index}>{msg}</Text>
+                <Box key={index} bg={activeConversation.closed ? "red.100" : "blue.100"} p={2} borderRadius="lg">
+                  <Text>{msg}</Text>
+                </Box>
               ))}
             </Stack>
             <Flex>
