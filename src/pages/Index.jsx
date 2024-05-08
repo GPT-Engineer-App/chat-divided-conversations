@@ -48,7 +48,19 @@ const Index = () => {
               {conversation.title} {conversation.closed ? "(Closed)" : ""}
             </Button>
           ))}
-          <Button colorScheme="teal" onClick={() => {}}>
+          <Button
+            colorScheme="teal"
+            onClick={() => {
+              const newConversation = {
+                id: Math.max(...conversations.map((c) => c.id)) + 1,
+                title: "New Conversation",
+                messages: [],
+                closed: false,
+              };
+              setConversations([...conversations, newConversation]);
+              setActiveConversationId(newConversation.id);
+            }}
+          >
             New Conversation
           </Button>
         </Flex>
@@ -60,7 +72,7 @@ const Index = () => {
                 <Flex key={index} justify={index % 2 === 0 ? "flex-start" : "flex-end"}>
                   <Box bg={activeConversation.closed ? "red.100" : "blue.100"} p={2} borderRadius="lg">
                     <Text fontSize="xs" color="gray.500">
-                      {new Date().toLocaleTimeString()}
+                      {new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}
                     </Text>
                     <Text>{msg}</Text>
                     <Text fontSize="xs" color="gray.500">
